@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>biodata</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Kelompok 6</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbarContent">
+          <div class="Index">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+          </div>
+          <div class="Pengalaman">
+            <li class="nav-item">
+              <a class="nav-link" href="pengalaman.html">Pengalaman</a>
+            </li>
+          </div>
+          <div class="Kontak">
+            <li class="nav-item">
+              <a class="nav-link" href="kontak.html">Kontak</a>
+            </li>
+          </div>
+          <div class="Hobi">
+            <li class="nav-item">
+              <a class="nav-link" href="hobi.html">Hobi</a>
+            </li>
+          </div>
+          <div class="Biodata">
+            <li class="nav-item">
+              <a class="nav-link" href="biodata.html">Biodata</a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="customBio" id="customBio">
+    <h1 class="text-center">Custom Biodata</h1>
+
+    <form id="mahasiswaForm" action="biodata.php" method="post" enctype="multipart/form-data">
+      <br>
+      <label for="nama">Nama Lengkap:</label>
+      <input type="text" id="nama" name="nama">
+      <br>
+      <label for="nim">NIM:</label>
+      <input type="text" id="nim" name="nim">
+      <br>
+      <label for="ttl">Tanggal Lahir:</label>
+      <input type="text" id="ttl" name="ttl">
+      <br>
+      <label for=" alamat">Alamat:</label>
+      <input type="text" id="alamat" name="alamat">
+      <br>
+      <label for="pendidikan">Pendidikan:</label>
+      <input type="text" id="pendidikan" name="pendidikan">
+      <br>
+      <label for="foto">Foto Profil:</label>
+      <input type="file" id="foto" name="foto" accept="image/*">
+      <br>
+
+      <ul style="list-style-type: none;">
+        <li>
+          <button type="submit" name="tambahMahasiswa">Tambahkan Mahasiswa</button>
+          <button type="submit" name="editMahasiswa">Edit Mahasiswa</button>
+        </li>
+      </ul>
+
+      <label for="NimHps">NIM:</label>
+      <input type="text" id="NimHps" name="NimHps">
+      <p>Input NIM sesuai dengan Mahasiswa yang akan dihapus.</p>
+      <button type="submit" name="hapusMahasiswa">Hapus Mahasiswa</button>
+
+    </form>
+
+
+
+    <div id="biodata" class="wrapper">
+      <h1 class="text-center">BIODATA</h1>
+      <div class="our_team">
+        <div id="biodataContainer"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#fffeff" fill-opacity="1"
+            d="M0,160L48,186.7C96,213,192,267,288,256C384,245,480,171,576,149.3C672,128,768,160,864,192C960,224,1056,256,1152,272C1248,288,1344,288,1392,288L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+    </div>
+
+    <div id="konten"></div>
+
+    <div class="ajax-buttons" style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
+      <button style="height: 40px" type="button" onclick="bukanav('pengalaman.html')">Pengalaman</button>
+      <button style="height: 40px; padding-left: 15px; padding-right: 15px;" type="button"
+        onclick="bukanav('hobi.html')">Hobi</button>
+      <button style="height: 40px ;padding-left: 15px; padding-right: 15px;" type="button"
+        onclick="bukanav('kontak.html')">Kontak</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <script>
+      function bukanav(url) {
+        $.ajax({
+          url: url,
+          method: 'GET',
+          success: function (data) {
+            $('#konten').html(data);
+          },
+          error: function () {
+            $('#konten').html('<p>Error loading content</p>');
+          }
+        });
+      }
+    </script>
+
+    <script src="custom.js"></script>
+  </div>
+</body>
+
+</html>

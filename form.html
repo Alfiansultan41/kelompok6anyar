@@ -1,0 +1,34 @@
+<form id="mahasiswaForm" action="biodata.php" method="post" enctype="multipart/form-data">
+    <br>
+    <label for="nama">Nama Lengkap:</label>
+    <input type="text" id="nama" name="nama">
+    <br>
+    <label for="nim">NIM:</label>
+    <input type="text" id="nim" name="nim">
+    <br>
+    <label for="ttl">Tanggal Lahir:</label>
+    <input type="text" id="ttl" name="ttl">
+    <br>
+    <label for=" alamat">Alamat:</label>
+    <input type="text" id="alamat" name="alamat">
+    <br>
+    <label for="pendidikan">Pendidikan:</label>
+    <input type="text" id="pendidikan" name="pendidikan">
+    <br>
+    <label for="foto">Foto Profil:</label>
+    <input type="file" id="foto" name="foto" accept="image/*">
+    <br>
+
+    <ul style="list-style-type: none;">
+        <li>
+            <button type="submit" name="tambahMahasiswa">Tambahkan Mahasiswa</button>
+            <button type="submit" name="editMahasiswa">Edit Mahasiswa</button>
+        </li>
+    </ul>
+
+    <label for="NimHps">NIM:</label>
+    <input type="text" id="NimHps" name="NimHps">
+    <p>Input NIM sesuai dengan Mahasiswa yang akan dihapus.</p>
+    <button type="submit" name="hapusMahasiswa">Hapus Mahasiswa</button>
+
+</form>

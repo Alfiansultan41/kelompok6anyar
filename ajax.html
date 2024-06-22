@@ -1,0 +1,28 @@
+<div id="konten"></div>
+
+<div class="ajax-buttons" style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
+    <button style="height: 40px" type="button" onclick="bukanav('pengalaman.html')">Pengalaman</button>
+    <button style="height: 40px; padding-left: 15px; padding-right: 15px;" type="button"
+        onclick="bukanav('hobi.html')">Hobi</button>
+    <button style="height: 40px ;padding-left: 15px; padding-right: 15px;" type="button"
+        onclick="bukanav('kontak.html')">Kontak</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
+
+<script>
+    function bukanav(url) {
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function (data) {
+                $('#konten').html(data);
+            },
+            error: function () {
+                $('#konten').html('<p>Error loading content</p>');
+            }
+        });
+    }
+</script>
